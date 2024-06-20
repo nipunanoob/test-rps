@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors!</title>
+</head>
+<body>
+    <script>
+       function getComputerChoice(){
+        choice_id =  Math.floor(Math.random()*3)
+        if (choice_id == 1){
+            console.log("Computer chooses Rock!")
+            choice = "rock"
+        } else if (choice_id == 2){
+            console.log("Computer chooses Paper!")
+            choice = "paper"
+        } else {
+            console.log("Computer chooses Scissors!")
+            choice= "scissors"
+          }
+        console.log(choice)
+        return choice
+        } 
+       function getUserChoice(){
+        let choice
+        while (true) {
+          choice = prompt("Rock paper or scissors?")
+          choice = choice.toLowerCase() 
+          if (choice === "rock") {
+            console.log("You chose Rock!")
+          }else if(choice === "paper"){
+            console.log("You chose Paper!")
+          }else if(choice === "scissors"){
+            console.log("You chose Scissors!")
+          }else{
+            alert("Invalid option, please try again!")
+          }
+          console.log(choice)
+          return choice
+        } 
+       }
+       function playRound(humanChoice, computerChoice){
+        let loseMessage = "You lose!"
+        let winMessage = "You win!"
+        if (humanChoice===computerChoice){
+            console.log("Its a tie!")
+        }
+        else if (humanChoice == "rock"){
+            if (computerChoice =="paper"){
+                computerScore +=1
+                console.log(loseMessage);
+            } else {
+                humanScore+=1
+                console.log(winMessage);
+            }
+        }
+        else if(humanChoice == "paper"){
+            if (computerChoice == "scissors"){
+                computerScore +=1
+                console.log(loseMessage);
+            } else {
+                humanScore +=1
+                console.log(winMessage);
+            }
+        }
+        else{
+            if (computerChoice == "rock"){
+                computerScore +=1
+                console.log(loseMessage);
+            } else {
+                humanScore +=1
+                console.log(winMessage);
+            }
+        }
+       }
+        let humanScore = 0
+        let computerScore = 0
+       function playGame(){
+
+        let gameCount = 0
+        while (gameCount < 5){
+            playRound(getUserChoice(), getComputerChoice())
+            console.log("Human score: ",humanScore, "Computer Score: ",computerScore)
+            gameCount += 1;
+       }}
+       playGame()
+       
+
+    </script>
+</body>
+</html>
